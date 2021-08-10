@@ -21,7 +21,6 @@ module "aws_lb_controller" {
   iam_role_name                   = "eks-lb-controller-${var.eks_cluster_id}"
   chart_version_aws_lb_controller = var.chart_version_aws_lb_controller
 }
-
 ```
 
 
