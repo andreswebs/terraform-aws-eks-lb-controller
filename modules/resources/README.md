@@ -1,9 +1,9 @@
-# terraform-aws-eks-lb-controller
+# terraform-aws-eks-lb-controller resources
 
 [//]: # (BEGIN_TF_DOCS)
-Deploys the AWS Load Balancer Controller on AWS EKS.
+Deploys the Helm chart for the AWS Load Balancer Controller
 
-Note: This module depends on an imperative deployment of CRDs:
+Note: The chart depends on an imperative deployment of CRDs:
 
 ```sh
 kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
@@ -14,14 +14,12 @@ kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-con
 Example:
 
 ```hcl
-module "aws_lb_controller" {
-  source                          = "github.com/andreswebs/terraform-aws-eks-lb-controller"
+module "aws_lb_controller_resources" {
+  source                          = "github.com/andreswebs/terraform-aws-eks-lb-controller//modules/resources"
   cluster_name                    = var.eks_cluster_id
-  cluster_oidc_provider           = var.eks_cluster_oidc_provider
-  iam_role_name                   = "eks-lb-controller-${var.eks_cluster_id}"
+  iam_role_arn                    = var.aws_lb_controller_iam_role_arn
   chart_version_aws_lb_controller = var.chart_version_aws_lb_controller
 }
-
 ```
 
 
@@ -32,7 +30,6 @@ module "aws_lb_controller" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_chart_version_aws_lb_controller"></a> [chart\_version\_aws\_lb\_controller](#input\_chart\_version\_aws\_lb\_controller) | Chart version | `string` | `null` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
-| <a name="input_cluster_oidc_provider"></a> [cluster\_oidc\_provider](#input\_cluster\_oidc\_provider) | OpenID Connect (OIDC) Identity Provider associated with the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_helm_atomic_creation"></a> [helm\_atomic\_creation](#input\_helm\_atomic\_creation) | Purge resources on installation failure ? The wait flag will be set automatically if atomic is used | `bool` | `true` | no |
 | <a name="input_helm_cleanup_on_fail"></a> [helm\_cleanup\_on\_fail](#input\_helm\_cleanup\_on\_fail) | Deletion new resources created in this upgrade if the upgrade fails ? | `bool` | `true` | no |
 | <a name="input_helm_create_namespace"></a> [helm\_create\_namespace](#input\_helm\_create\_namespace) | Create the namespace if it does not yet exist ? | `bool` | `true` | no |
@@ -50,16 +47,13 @@ module "aws_lb_controller" {
 | <a name="input_helm_verify"></a> [helm\_verify](#input\_helm\_verify) | Verify the package before installing it. Helm uses a provenance file to verify the integrity of the chart | `bool` | `false` | no |
 | <a name="input_helm_wait_for_completion"></a> [helm\_wait\_for\_completion](#input\_helm\_wait\_for\_completion) | Wait until all resources are in a ready state before marking the release as successful ? | `bool` | `true` | no |
 | <a name="input_helm_wait_for_jobs"></a> [helm\_wait\_for\_jobs](#input\_helm\_wait\_for\_jobs) | Wait until all Jobs have been completed before marking the release as successful ? | `bool` | `true` | no |
-| <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | n/a | `string` | `"aws-load-balancer-controller"` | no |
+| <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | n/a | `string` | `""` | no |
 | <a name="input_k8s_namespace"></a> [k8s\_namespace](#input\_k8s\_namespace) | Kubernetes namespace on which to install resources | `string` | `"kube-system"` | no |
 | <a name="input_k8s_sa_name"></a> [k8s\_sa\_name](#input\_k8s\_sa\_name) | Kubernetes service account name | `string` | `"aws-load-balancer-controller"` | no |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_iam"></a> [iam](#module\_iam) | ./modules/iam | n/a |
-| <a name="module_resources"></a> [resources](#module\_resources) | ./modules/resources | n/a |
+No modules.
 
 ## Outputs
 
@@ -67,11 +61,12 @@ module "aws_lb_controller" {
 |------|-------------|
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The name (`metadata.name`) of the Kubernetes namespace |
 | <a name="output_release"></a> [release](#output\_release) | Helm release |
-| <a name="output_role"></a> [role](#output\_role) | IAM role for the Kubernetes service account |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.2.0 |
 
 ## Requirements
 
@@ -84,14 +79,8 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [helm_release.aws_lb_controller](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 
 [//]: # (END_TF_DOCS)
-
-## Authors
-
-**Andre Silva** - [@andreswebs](https://github.com/andreswebs)
-
-## License
-
-This project is licensed under the [Unlicense](UNLICENSE.md).

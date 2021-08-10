@@ -1,11 +1,12 @@
-variable "cluster_oidc_provider" {
-  type        = string
-  description = "OpenID Connect (OIDC) Identity Provider associated with the Kubernetes cluster"
-}
-
 variable "cluster_name" {
   type        = string
   description = "Cluster name"
+}
+
+variable "k8s_namespace" {
+  type = string
+  description = "Kubernetes namespace"
+  default = "kube-system"
 }
 
 variable "k8s_sa_name" {
@@ -20,9 +21,9 @@ variable "k8s_namespace" {
   default     = "kube-system"
 }
 
-variable "iam_role_name" {
+variable "iam_role_arn" {
   type = string
-  default = "aws-load-balancer-controller"
+  default = ""
 }
 
 variable "chart_version_aws_lb_controller" {
