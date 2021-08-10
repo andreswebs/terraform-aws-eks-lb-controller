@@ -1,7 +1,7 @@
 /**
 * Deploys the AWS Load Balancer Controller on AWS EKS.
 *
-* Note: This module depends on an imperative deployment of CRDs:
+* **Note**: This module depends on an imperative deployment of CRDs:
 *
 * ```sh
 * kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
