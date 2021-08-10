@@ -15,12 +15,6 @@ variable "k8s_sa_name" {
   default = "aws-load-balancer-controller"
 }
 
-variable "k8s_namespace" {
-  type        = string
-  description = "Kubernetes namespace on which to install resources"
-  default     = "kube-system"
-}
-
 variable "iam_role_arn" {
   type = string
   default = ""
