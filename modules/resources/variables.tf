@@ -87,7 +87,7 @@ variable "helm_verify" {
 }
 
 variable "helm_keyring" {
-  type        = bool
+  type        = string
   description = "Location of public keys used for verification; used only if verify is true"
   default     = ".gnupg/pubring.gpg"
 }
