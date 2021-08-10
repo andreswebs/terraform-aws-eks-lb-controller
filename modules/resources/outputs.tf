@@ -5,5 +5,5 @@ output "namespace" {
 
 output "release" {
   description = "Helm release"
-  value = helm_release.chartmuseum
+  value = helm_release.aws_lb_controller
 }
