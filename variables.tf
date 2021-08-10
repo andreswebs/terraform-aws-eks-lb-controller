@@ -22,6 +22,7 @@ variable "k8s_namespace" {
 
 variable "iam_role_name" {
   type = string
+  description = "IAM role name"
   default = "aws-load-balancer-controller"
 }
 

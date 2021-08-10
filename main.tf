@@ -36,7 +36,7 @@ module "iam" {
   cluster_oidc_provider = var.cluster_oidc_provider
   k8s_namespace         = var.k8s_namespace
   k8s_sa_name           = var.k8s_sa_name
-  iam_role_name         = var.iam_role
+  iam_role_name         = var.iam_role_name
 }
 
 module "resources" {

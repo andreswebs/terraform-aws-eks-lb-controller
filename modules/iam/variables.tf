@@ -4,18 +4,19 @@ variable "cluster_oidc_provider" {
 }
 
 variable "k8s_namespace" {
-  type = string
+  type        = string
   description = "Kubernetes namespace"
-  default = "kube-system"
+  default     = "kube-system"
 }
 
 variable "k8s_sa_name" {
-  type = string
+  type        = string
   description = "Kubernetes service account name"
-  default = "aws-load-balancer-controller"
+  default     = "aws-load-balancer-controller"
 }
 
 variable "iam_role_name" {
-  type = string
-  default = "aws-load-balancer-controller"
+  type        = string
+  description = "IAM role name"
+  default     = "aws-load-balancer-controller"
 }
