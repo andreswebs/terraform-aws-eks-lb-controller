@@ -1,9 +1,9 @@
 output "namespace" {
-  value       = var.k8s_namespace
+  value       = helm_release.this.metadata[0].namespace
   description = "The name (`metadata.name`) of the Kubernetes namespace"
 }
 
 output "release" {
   description = "Helm release"
-  value = helm_release.aws_lb_controller
+  value       = helm_release.this
 }

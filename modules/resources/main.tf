@@ -26,7 +26,7 @@ terraform {
   }
 }
 
-resource "helm_release" "aws_lb_controller" {
+resource "helm_release" "this" {
   name       = var.helm_release_name
   namespace  = var.k8s_namespace
   repository = "https://aws.github.io/eks-charts"
