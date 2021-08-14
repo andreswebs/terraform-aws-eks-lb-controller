@@ -27,14 +27,14 @@ module "assume_role_policy" {
   k8s_sa_name           = var.k8s_sa_name
 }
 
-resource "aws_iam_role" "aws_lb_controller" {
+resource "aws_iam_role" "this" {
   name                  = local.iam_role_name
   assume_role_policy    = module.assume_role_policy.json
   force_detach_policies = true
 }
 
-resource "aws_iam_role_policy" "aws_lb_controller_permissions" {
+resource "aws_iam_role_policy" "this" {
   name   = "aws-lb-controller-permissions"
-  role   = aws_iam_role.aws_lb_controller.id
+  role   = aws_iam_role.this.id
   policy = file("${path.module}/policies/aws-load-balancer-controller.json")
 }
