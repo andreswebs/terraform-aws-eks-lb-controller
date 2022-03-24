@@ -1,13 +1,9 @@
 # terraform-aws-eks-lb-controller
 
-[//]: # (BEGIN_TF_DOCS)
 Deploys the AWS Load Balancer Controller on AWS EKS.
 
-**Note**: This module depends on an imperative deployment of CRDs:
+[//]: # (BEGIN_TF_DOCS)
 
-```sh
-kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
-```
 
 ## Usage
 
@@ -76,9 +72,9 @@ No providers.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.48.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.2.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.50 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.2 |
 
 ## Resources
 

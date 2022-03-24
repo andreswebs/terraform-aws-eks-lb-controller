@@ -1,31 +1,3 @@
-/**
-* Deploys the Helm chart for the AWS Load Balancer Controller
-*
-* Note: The chart depends on an imperative deployment of CRDs:
-*
-* ```sh
-* kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
-* ```
-*/
-
-terraform {
-  required_version = ">= 1.0.0"
-
-  required_providers {
-
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.48.0"
-    }
-
-    helm = {
-      source  = "hashicorp/helm"
-      version = ">= 2.2.0"
-    }
-
-  }
-}
-
 resource "helm_release" "this" {
   name       = var.helm_release_name
   namespace  = var.k8s_namespace

@@ -1,33 +1,6 @@
-/**
-* Deploys the AWS Load Balancer Controller on AWS EKS.
-*
-* **Note**: This module depends on an imperative deployment of CRDs:
-*
-* ```sh
-* kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
-* ```
-*/
-
-terraform {
-  required_version = ">= 1.0.0"
-
-  required_providers {
-
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.48.0"
-    }
-
-    helm = {
-      source  = "hashicorp/helm"
-      version = ">= 2.2.0"
-    }
-
-  }
-}
-
 module "iam" {
-  source                = "./modules/iam"
+  source = "./modules/iam"
+
   cluster_oidc_provider = var.cluster_oidc_provider
   k8s_namespace         = var.k8s_namespace
   k8s_sa_name           = var.k8s_sa_name
@@ -35,7 +8,8 @@ module "iam" {
 }
 
 module "resources" {
-  source                          = "./modules/resources"
+  source = "./modules/resources"
+
   cluster_name                    = var.cluster_name
   k8s_namespace                   = var.k8s_namespace
   k8s_sa_name                     = var.k8s_sa_name

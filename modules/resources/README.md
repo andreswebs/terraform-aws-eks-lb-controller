@@ -1,13 +1,9 @@
 # terraform-aws-eks-lb-controller resources
 
-[//]: # (BEGIN_TF_DOCS)
 Deploys the Helm chart for the AWS Load Balancer Controller
 
-Note: The chart depends on an imperative deployment of CRDs:
+[//]: # (BEGIN_TF_DOCS)
 
-```sh
-kubectl apply -k "https://github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
-```
 
 ## Usage
 
@@ -66,15 +62,15 @@ No modules.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.2.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 2.2 |
 
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.48.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.2.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.50 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.2 |
 
 ## Resources
 

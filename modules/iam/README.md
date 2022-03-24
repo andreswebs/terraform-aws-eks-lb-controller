@@ -1,5 +1,9 @@
-[//]: # (BEGIN_TF_DOCS)
+# terraform-aws-eks-lb-controller iam
+
 Deploys IAM resources for the AWS Load Balancer Controller.
+
+[//]: # (BEGIN_TF_DOCS)
+
 
 ## Usage
 
@@ -40,14 +44,14 @@ module "aws_lb_controller_iam" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.48.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.50 |
 
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.48.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.50 |
 
 ## Resources
 

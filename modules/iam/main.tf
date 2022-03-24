@@ -1,20 +1,3 @@
-/**
-* Deploys IAM resources for the AWS Load Balancer Controller.
-*/
-
-terraform {
-  required_version = ">= 1.0.0"
-
-  required_providers {
-
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.48.0"
-    }
-
-  }
-}
-
 locals {
   iam_role_name = var.iam_role_name == "" ? null : var.iam_role_name
 }
